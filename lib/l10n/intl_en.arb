@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "counter_appbar_title": "Test title here",
+    "server_error": "Server Error",
+    "server_error_description": "Something went wrong!",
+    "dio_error": "Dio Error"
+}   

@@ -1,0 +1,42 @@
+name: bloc_example
+description: A Very Good Project created by Very Good CLI.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dependencies:
+  bloc: ^8.1.1
+  dartz: ^0.10.1
+  dio: ^4.0.6
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.2
+  flutter_localizations:
+    sdk: flutter
+  freezed_annotation: ^2.1.0
+  get_it: ^7.3.0
+  intl: ^0.17.0
+  json_annotation: ^4.6.0
+  pretty_dio_logger: ^1.1.1
+  retrofit: ^3.0.0
+
+
+dev_dependencies:
+  bloc_test: ^9.1.1
+  build_runner: ^2.2.0
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.1.0+1
+  json_serializable: ^6.3.1
+  mocktail: ^0.3.0
+  retrofit_generator: ^4.0.3+1
+  very_good_analysis: ^3.1.0
+
+flutter_intl:
+  enabled: true
+
+flutter:
+  uses-material-design: true
+  generate: true
