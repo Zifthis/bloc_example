@@ -24,19 +24,19 @@ class MovieResultsResponse {
       _$MovieResultsResponseFromJson(json);
   Map<String, dynamic> toJson() => _$MovieResultsResponseToJson(this);
 
-  bool adult;
-  String backdropPath;
-  int id;
-  String originalLanguage;
-  String originalTitle;
-  String overview;
-  double popularity;
-  String posterPath;
-  DateTime releaseDate;
-  String title;
-  bool video;
-  double voteAverage;
-  int voteCount;
+  bool? adult;
+  String? backdropPath;
+  int? id;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  DateTime? releaseDate;
+  String? title;
+  bool? video;
+  double? voteAverage;
+  int? voteCount;
 
   MovieResults toDomain() => MovieResults(
         adult: adult,

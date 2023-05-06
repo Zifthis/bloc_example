@@ -1,5 +1,5 @@
+import 'package:bloc_example/app/services/service_locator.dart';
 import 'package:bloc_example/feature/movies/domain/cubit/movie_cubit.dart';
-import 'package:bloc_example/feature/movies/presentation/widgets/movie_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,27 +13,39 @@ class MoviePage extends StatefulWidget {
 class _MoviePageState extends State<MoviePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: BlocConsumer<MovieCubit, MovieState>(
-          listener: (context, state) {
-            return;
-          },
+    return BlocProvider.value(
+      value: sl<MovieCubit>()..getNextPage(),
+      child: Scaffold(
+        appBar: AppBar(),
+        body: BlocBuilder<MovieCubit, MovieState>(
           builder: (context, state) {
             return state.maybeWhen(
-              orElse: SizedBox.new,
-              error: (failure) => Center(child: Text(failure.title)),
-              loading: () =>
-                  const Center(child: CircularProgressIndicator.adaptive()),
-              loaded: (movieResults) => ListView.builder(
-                itemCount: movieResults.length,
-                itemBuilder: (ctx, index) {
-                  return MovieTile(movie: movieResults[index]);
-                },
+              loaded: (movies, currentPage) {
+                return ListView.builder(
+                  itemCount: movies.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(movies[index].title ?? ''),
+                      subtitle: Text(movies[index].overview ?? ''),
+                    );
+                  },
+                );
+              },
+              loading: () => const Center(
+                child: CircularProgressIndicator(),
               ),
+              error: (failure) => Center(
+                child: Text(failure.title),
+              ),
+              orElse: SizedBox.new,
             );
           },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.read<MovieCubit>().getNextPage();
+          },
+          child: const Icon(Icons.arrow_downward),
         ),
       ),
     );

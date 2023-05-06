@@ -5,17 +5,23 @@ import 'package:bloc_example/feature/movies/data/repository/i_movie_repository.d
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
+@Singleton(as: IMovieRepository)
 class MovieRepository implements IMovieRepository {
   MovieRepository(this._apiClient);
 
   final ApiClient _apiClient;
 
   @override
-  EitherAppFailureOr<List<MovieResults>> fetchPopularMovieResults() async {
+  EitherAppFailureOr<List<MovieResults>> fetchPopularMovieResults(
+    int page,
+  ) async {
     try {
-      final response = await _apiClient.getUpcomingMovies();
-      return Right(response.map((e) => e.toDomain()).toList());
+      final response = await _apiClient.getUpcomingMovies(page);
+      return Right(
+        response.movieResultsResponse!.map((e) => e.toDomain()).toList(),
+      );
     } on DioError catch (error) {
       return Left(AppFailure.fromDioErrorResponse(error));
     } catch (err) {
@@ -24,7 +30,7 @@ class MovieRepository implements IMovieRepository {
   }
 
   @override
-  EitherAppFailureOr<List<MovieResults>> fetchMovieResults() {
+  EitherAppFailureOr<MovieResults> fetchMovieResults() {
     // TODO: implement fetchMovieResults
     throw UnimplementedError();
   }

@@ -20,7 +20,7 @@ mixin _$MovieState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieResults> movieResults) loaded,
+    required TResult Function(List<MovieResults> movieResults, int page) loaded,
     required TResult Function(AppFailure failure) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$MovieState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieResults> movieResults)? loaded,
+    TResult? Function(List<MovieResults> movieResults, int page)? loaded,
     TResult? Function(AppFailure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$MovieState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieResults> movieResults)? loaded,
+    TResult Function(List<MovieResults> movieResults, int page)? loaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) =>
@@ -125,7 +125,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieResults> movieResults) loaded,
+    required TResult Function(List<MovieResults> movieResults, int page) loaded,
     required TResult Function(AppFailure failure) error,
   }) {
     return initial();
@@ -136,7 +136,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieResults> movieResults)? loaded,
+    TResult? Function(List<MovieResults> movieResults, int page)? loaded,
     TResult? Function(AppFailure failure)? error,
   }) {
     return initial?.call();
@@ -147,7 +147,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieResults> movieResults)? loaded,
+    TResult Function(List<MovieResults> movieResults, int page)? loaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -238,7 +238,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieResults> movieResults) loaded,
+    required TResult Function(List<MovieResults> movieResults, int page) loaded,
     required TResult Function(AppFailure failure) error,
   }) {
     return loading();
@@ -249,7 +249,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieResults> movieResults)? loaded,
+    TResult? Function(List<MovieResults> movieResults, int page)? loaded,
     TResult? Function(AppFailure failure)? error,
   }) {
     return loading?.call();
@@ -260,7 +260,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieResults> movieResults)? loaded,
+    TResult Function(List<MovieResults> movieResults, int page)? loaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -317,7 +317,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MovieResults> movieResults});
+  $Res call({List<MovieResults> movieResults, int page});
 }
 
 /// @nodoc
@@ -331,12 +331,17 @@ class __$$_LoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? movieResults = null,
+    Object? page = null,
   }) {
     return _then(_$_Loaded(
       null == movieResults
           ? _value._movieResults
           : movieResults // ignore: cast_nullable_to_non_nullable
               as List<MovieResults>,
+      null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -344,7 +349,7 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<MovieResults> movieResults)
+  const _$_Loaded(final List<MovieResults> movieResults, this.page)
       : _movieResults = movieResults;
 
   final List<MovieResults> _movieResults;
@@ -356,8 +361,11 @@ class _$_Loaded implements _Loaded {
   }
 
   @override
+  final int page;
+
+  @override
   String toString() {
-    return 'MovieState.loaded(movieResults: $movieResults)';
+    return 'MovieState.loaded(movieResults: $movieResults, page: $page)';
   }
 
   @override
@@ -366,12 +374,13 @@ class _$_Loaded implements _Loaded {
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
             const DeepCollectionEquality()
-                .equals(other._movieResults, _movieResults));
+                .equals(other._movieResults, _movieResults) &&
+            (identical(other.page, page) || other.page == page));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_movieResults));
+      runtimeType, const DeepCollectionEquality().hash(_movieResults), page);
 
   @JsonKey(ignore: true)
   @override
@@ -384,10 +393,10 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieResults> movieResults) loaded,
+    required TResult Function(List<MovieResults> movieResults, int page) loaded,
     required TResult Function(AppFailure failure) error,
   }) {
-    return loaded(movieResults);
+    return loaded(movieResults, page);
   }
 
   @override
@@ -395,10 +404,10 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieResults> movieResults)? loaded,
+    TResult? Function(List<MovieResults> movieResults, int page)? loaded,
     TResult? Function(AppFailure failure)? error,
   }) {
-    return loaded?.call(movieResults);
+    return loaded?.call(movieResults, page);
   }
 
   @override
@@ -406,12 +415,12 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieResults> movieResults)? loaded,
+    TResult Function(List<MovieResults> movieResults, int page)? loaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(movieResults);
+      return loaded(movieResults, page);
     }
     return orElse();
   }
@@ -455,9 +464,11 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements MovieState {
-  const factory _Loaded(final List<MovieResults> movieResults) = _$_Loaded;
+  const factory _Loaded(final List<MovieResults> movieResults, final int page) =
+      _$_Loaded;
 
   List<MovieResults> get movieResults;
+  int get page;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -481,10 +492,10 @@ class __$$_ErrorCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failure = freezed,
+    Object? failure = null,
   }) {
     return _then(_$_Error(
-      freezed == failure
+      null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as AppFailure,
@@ -510,12 +521,11 @@ class _$_Error implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Error &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+  int get hashCode => Object.hash(runtimeType, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -528,7 +538,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<MovieResults> movieResults) loaded,
+    required TResult Function(List<MovieResults> movieResults, int page) loaded,
     required TResult Function(AppFailure failure) error,
   }) {
     return error(failure);
@@ -539,7 +549,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<MovieResults> movieResults)? loaded,
+    TResult? Function(List<MovieResults> movieResults, int page)? loaded,
     TResult? Function(AppFailure failure)? error,
   }) {
     return error?.call(failure);
@@ -550,7 +560,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<MovieResults> movieResults)? loaded,
+    TResult Function(List<MovieResults> movieResults, int page)? loaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) {
