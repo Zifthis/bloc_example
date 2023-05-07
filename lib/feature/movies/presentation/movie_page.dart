@@ -1,4 +1,7 @@
+// ignore_for_file: inference_failure_on_instance_creation
+
 import 'package:bloc_example/app/services/service_locator.dart';
+import 'package:bloc_example/feature/movie_details/presentation/movie_detials_page.dart';
 import 'package:bloc_example/feature/movies/domain/cubit/movie_cubit.dart';
 import 'package:bloc_example/feature/movies/presentation/widgets/list_tile_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +29,18 @@ class _MoviePageState extends State<MoviePage> {
                 return ListView.builder(
                   itemCount: movies.length,
                   itemBuilder: (context, index) {
-                    return ListTileWidget(
-                      results: movies[index],
+                    return InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MovieDetialsPage(
+                            movieResults: movies[index],
+                          ),
+                        ),
+                      ),
+                      child: ListTileWidget(
+                        results: movies[index],
+                      ),
                     );
                   },
                 );

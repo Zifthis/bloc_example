@@ -17,6 +17,7 @@ class MovieCubit extends Cubit<MovieState> {
   final IMovieRepository _iMovieRepository;
 
   Future<void> getNextPage(int page) async {
+    emit(const MovieState.loading());
     final results = await _iMovieRepository.fetchPopularMovieResults(
       page,
     );
