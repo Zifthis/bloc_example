@@ -21,6 +21,7 @@ mixin _$MovieState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MovieResults> movieResults, int page) loaded,
+    required TResult Function(List<MovieResults> result) pagingLoaded,
     required TResult Function(AppFailure failure) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$MovieState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult? Function(List<MovieResults> result)? pagingLoaded,
     TResult? Function(AppFailure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$MovieState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult Function(List<MovieResults> result)? pagingLoaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) =>
@@ -46,6 +49,7 @@ mixin _$MovieState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_PagingLoaded value) pagingLoaded,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$MovieState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_PagingLoaded value)? pagingLoaded,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$MovieState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_PagingLoaded value)? pagingLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -126,6 +132,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MovieResults> movieResults, int page) loaded,
+    required TResult Function(List<MovieResults> result) pagingLoaded,
     required TResult Function(AppFailure failure) error,
   }) {
     return initial();
@@ -137,6 +144,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult? Function(List<MovieResults> result)? pagingLoaded,
     TResult? Function(AppFailure failure)? error,
   }) {
     return initial?.call();
@@ -148,6 +156,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult Function(List<MovieResults> result)? pagingLoaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -163,6 +172,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_PagingLoaded value) pagingLoaded,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -174,6 +184,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_PagingLoaded value)? pagingLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -185,6 +196,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_PagingLoaded value)? pagingLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -239,6 +251,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MovieResults> movieResults, int page) loaded,
+    required TResult Function(List<MovieResults> result) pagingLoaded,
     required TResult Function(AppFailure failure) error,
   }) {
     return loading();
@@ -250,6 +263,7 @@ class _$_Loading implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult? Function(List<MovieResults> result)? pagingLoaded,
     TResult? Function(AppFailure failure)? error,
   }) {
     return loading?.call();
@@ -261,6 +275,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult Function(List<MovieResults> result)? pagingLoaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -276,6 +291,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_PagingLoaded value) pagingLoaded,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -287,6 +303,7 @@ class _$_Loading implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_PagingLoaded value)? pagingLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -298,6 +315,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_PagingLoaded value)? pagingLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -394,6 +412,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MovieResults> movieResults, int page) loaded,
+    required TResult Function(List<MovieResults> result) pagingLoaded,
     required TResult Function(AppFailure failure) error,
   }) {
     return loaded(movieResults, page);
@@ -405,6 +424,7 @@ class _$_Loaded implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult? Function(List<MovieResults> result)? pagingLoaded,
     TResult? Function(AppFailure failure)? error,
   }) {
     return loaded?.call(movieResults, page);
@@ -416,6 +436,7 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult Function(List<MovieResults> result)? pagingLoaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -431,6 +452,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_PagingLoaded value) pagingLoaded,
     required TResult Function(_Error value) error,
   }) {
     return loaded(this);
@@ -442,6 +464,7 @@ class _$_Loaded implements _Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_PagingLoaded value)? pagingLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return loaded?.call(this);
@@ -453,6 +476,7 @@ class _$_Loaded implements _Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_PagingLoaded value)? pagingLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -471,6 +495,164 @@ abstract class _Loaded implements MovieState {
   int get page;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PagingLoadedCopyWith<$Res> {
+  factory _$$_PagingLoadedCopyWith(
+          _$_PagingLoaded value, $Res Function(_$_PagingLoaded) then) =
+      __$$_PagingLoadedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<MovieResults> result});
+}
+
+/// @nodoc
+class __$$_PagingLoadedCopyWithImpl<$Res>
+    extends _$MovieStateCopyWithImpl<$Res, _$_PagingLoaded>
+    implements _$$_PagingLoadedCopyWith<$Res> {
+  __$$_PagingLoadedCopyWithImpl(
+      _$_PagingLoaded _value, $Res Function(_$_PagingLoaded) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_$_PagingLoaded(
+      null == result
+          ? _value._result
+          : result // ignore: cast_nullable_to_non_nullable
+              as List<MovieResults>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PagingLoaded implements _PagingLoaded {
+  const _$_PagingLoaded(final List<MovieResults> result) : _result = result;
+
+  final List<MovieResults> _result;
+  @override
+  List<MovieResults> get result {
+    if (_result is EqualUnmodifiableListView) return _result;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_result);
+  }
+
+  @override
+  String toString() {
+    return 'MovieState.pagingLoaded(result: $result)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PagingLoaded &&
+            const DeepCollectionEquality().equals(other._result, _result));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PagingLoadedCopyWith<_$_PagingLoaded> get copyWith =>
+      __$$_PagingLoadedCopyWithImpl<_$_PagingLoaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<MovieResults> movieResults, int page) loaded,
+    required TResult Function(List<MovieResults> result) pagingLoaded,
+    required TResult Function(AppFailure failure) error,
+  }) {
+    return pagingLoaded(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult? Function(List<MovieResults> result)? pagingLoaded,
+    TResult? Function(AppFailure failure)? error,
+  }) {
+    return pagingLoaded?.call(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult Function(List<MovieResults> result)? pagingLoaded,
+    TResult Function(AppFailure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (pagingLoaded != null) {
+      return pagingLoaded(result);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_PagingLoaded value) pagingLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return pagingLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_PagingLoaded value)? pagingLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return pagingLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_PagingLoaded value)? pagingLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (pagingLoaded != null) {
+      return pagingLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PagingLoaded implements MovieState {
+  const factory _PagingLoaded(final List<MovieResults> result) =
+      _$_PagingLoaded;
+
+  List<MovieResults> get result;
+  @JsonKey(ignore: true)
+  _$$_PagingLoadedCopyWith<_$_PagingLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -539,6 +721,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<MovieResults> movieResults, int page) loaded,
+    required TResult Function(List<MovieResults> result) pagingLoaded,
     required TResult Function(AppFailure failure) error,
   }) {
     return error(failure);
@@ -550,6 +733,7 @@ class _$_Error implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult? Function(List<MovieResults> result)? pagingLoaded,
     TResult? Function(AppFailure failure)? error,
   }) {
     return error?.call(failure);
@@ -561,6 +745,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<MovieResults> movieResults, int page)? loaded,
+    TResult Function(List<MovieResults> result)? pagingLoaded,
     TResult Function(AppFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -576,6 +761,7 @@ class _$_Error implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_PagingLoaded value) pagingLoaded,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -587,6 +773,7 @@ class _$_Error implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_PagingLoaded value)? pagingLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -598,6 +785,7 @@ class _$_Error implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_PagingLoaded value)? pagingLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

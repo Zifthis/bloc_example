@@ -6,5 +6,7 @@ class MovieState with _$MovieState {
   const factory MovieState.loading() = _Loading;
   const factory MovieState.loaded(List<MovieResults> movieResults, int page) =
       _Loaded;
+  const factory MovieState.pagingLoaded(List<MovieResults> result) =
+      _PagingLoaded;
   const factory MovieState.error(AppFailure failure) = _Error;
 }

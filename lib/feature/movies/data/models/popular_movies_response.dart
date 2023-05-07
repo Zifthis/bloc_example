@@ -7,7 +7,7 @@ part 'popular_movies_response.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PopularMoivesResponse {
   PopularMoivesResponse({
-    required this.movieResultsResponse,
+    required this.results,
     required this.page,
     required this.totalPages,
     required this.totalResults,
@@ -16,13 +16,13 @@ class PopularMoivesResponse {
   factory PopularMoivesResponse.fromJson(Map<String, dynamic> json) =>
       _$PopularMoivesResponseFromJson(json);
   int? page;
-  List<MovieResultsResponse>? movieResultsResponse;
+  List<MovieResultsResponse>? results;
   int? totalPages;
   int? totalResults;
   Map<String, dynamic> toJson() => _$PopularMoivesResponseToJson(this);
 
   PopularMovies toDomain() => PopularMovies(
-        movieResults: movieResultsResponse?.map((e) => e.toDomain()).toList(),
+        movieResults: results?.map((e) => e.toDomain()).toList(),
         page: page,
         totalPages: totalPages,
         totalResults: totalResults,

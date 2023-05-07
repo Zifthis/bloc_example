@@ -20,7 +20,7 @@ class MovieRepository implements IMovieRepository {
     try {
       final response = await _apiClient.getUpcomingMovies(page);
       return Right(
-        response.movieResultsResponse!.map((e) => e.toDomain()).toList(),
+        response.results!.map((e) => e.toDomain()).toList(),
       );
     } on DioError catch (error) {
       return Left(AppFailure.fromDioErrorResponse(error));

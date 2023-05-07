@@ -1,5 +1,6 @@
 import 'package:bloc_example/app/services/service_locator.dart';
 import 'package:bloc_example/feature/movies/domain/cubit/movie_cubit.dart';
+import 'package:bloc_example/feature/movies/presentation/widgets/list_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,12 +12,13 @@ class MoviePage extends StatefulWidget {
 }
 
 class _MoviePageState extends State<MoviePage> {
+  int currentPage = 1;
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: sl<MovieCubit>()..getNextPage(),
+      value: sl<MovieCubit>()..getNextPage(currentPage),
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(title: const Text('Upcoming Movies')),
         body: BlocBuilder<MovieCubit, MovieState>(
           builder: (context, state) {
             return state.maybeWhen(
@@ -24,9 +26,8 @@ class _MoviePageState extends State<MoviePage> {
                 return ListView.builder(
                   itemCount: movies.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(movies[index].title ?? ''),
-                      subtitle: Text(movies[index].overview ?? ''),
+                    return ListTileWidget(
+                      results: movies[index],
                     );
                   },
                 );
@@ -43,7 +44,7 @@ class _MoviePageState extends State<MoviePage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            context.read<MovieCubit>().getNextPage();
+            sl<MovieCubit>().getNextPage(currentPage++);
           },
           child: const Icon(Icons.arrow_downward),
         ),

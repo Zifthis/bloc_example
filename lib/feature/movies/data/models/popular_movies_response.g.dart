@@ -9,7 +9,7 @@ part of 'popular_movies_response.dart';
 PopularMoivesResponse _$PopularMoivesResponseFromJson(
         Map<String, dynamic> json) =>
     PopularMoivesResponse(
-      movieResultsResponse: (json['movie_results_response'] as List<dynamic>?)
+      results: (json['results'] as List<dynamic>?)
           ?.map((e) => MovieResultsResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       page: json['page'] as int?,
@@ -21,7 +21,7 @@ Map<String, dynamic> _$PopularMoivesResponseToJson(
         PopularMoivesResponse instance) =>
     <String, dynamic>{
       'page': instance.page,
-      'movie_results_response': instance.movieResultsResponse,
+      'results': instance.results,
       'total_pages': instance.totalPages,
       'total_results': instance.totalResults,
     };
