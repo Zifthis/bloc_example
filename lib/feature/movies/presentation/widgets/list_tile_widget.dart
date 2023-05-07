@@ -1,6 +1,8 @@
 import 'package:bloc_example/app/constants/constants.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ListTileWidget extends StatelessWidget {
   const ListTileWidget({
@@ -10,41 +12,81 @@ class ListTileWidget extends StatelessWidget {
   final MovieResults results;
 
   @override
-  Widget build(BuildContext context) => ListTile(
-        leading: results.posterPath != null
-            ? CircleAvatar(
-                radius: 25,
-                backgroundImage:
-                    NetworkImage('${Constants.imageUrl}${results.posterPath}'),
-              )
-            : const CircleAvatar(
-                radius: 25,
-                backgroundImage: NetworkImage(
-                  Constants.imageDefaultUrl,
+  Widget build(BuildContext context) => SizedBox(
+        height: 400,
+        width: MediaQuery.of(context).size.width,
+        child: Card(
+          child: Stack(
+            children: [
+              CachedNetworkImage(
+                imageUrl: '${Constants.imageUrl}${results.posterPath}',
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  color: Colors.black.withOpacity(0.6),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: Text(
+                          results.title ?? '',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: Colors.yellow[700],
+                              size: 20,
+                            ),
+                            const SizedBox(width: 5),
+                            Text(
+                              results.voteAverage.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text(
+                          _dateForamt(results.releaseDate!),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-        title: Text(
-          results.title ?? '',
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-          ),
-          maxLines: 1,
-        ),
-        trailing: SizedBox(
-          height: 35,
-          width: 35,
-          child: CircleAvatar(
-            backgroundColor: Colors.amber,
-            child: Text(
-              results.voteAverage.toString(),
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
-            ),
+            ],
           ),
         ),
       );
+
+  String _dateForamt(DateTime dateString) {
+    final formattedDate = DateFormat('MMMM d, y').format(dateString);
+    return formattedDate;
+  }
 }

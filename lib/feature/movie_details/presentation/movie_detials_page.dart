@@ -1,5 +1,6 @@
 import 'package:bloc_example/app/constants/constants.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
+import 'package:bloc_example/feature/movies/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -38,29 +39,14 @@ class MovieDetialsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    movieResults.title ?? '',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  CustomText(title: movieResults.title ?? ''),
                   const SizedBox(height: 8),
-                  Text(
-                    _dateForamt(movieResults.releaseDate!),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
+                  CustomText(
+                    title: _dateForamt(movieResults.releaseDate!),
                   ),
                   const SizedBox(height: 16),
-                  Text(
-                    movieResults.overview ?? '',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
+                  CustomText(
+                    title: movieResults.overview ?? '',
                   ),
                   const SizedBox(height: 36),
                 ],

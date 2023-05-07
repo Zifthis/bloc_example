@@ -1,6 +1,6 @@
 // ignore_for_file: inference_failure_on_instance_creation
-
 import 'package:bloc_example/app/services/service_locator.dart';
+import 'package:bloc_example/feature/favourte_movies/presentation/favourite_movies_page.dart';
 import 'package:bloc_example/feature/movie_details/presentation/movie_detials_page.dart';
 import 'package:bloc_example/feature/movies/domain/cubit/movie_cubit.dart';
 import 'package:bloc_example/feature/movies/presentation/widgets/list_tile_widget.dart';
@@ -21,12 +21,30 @@ class _MoviePageState extends State<MoviePage> {
     return BlocProvider.value(
       value: sl<MovieCubit>()..getNextPage(currentPage),
       child: Scaffold(
-        appBar: AppBar(title: const Text('Upcoming Movies')),
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          title: const Text('Upcoming Movies'),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: IconButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FavouriteMoviesPage(),
+                  ),
+                ),
+                icon: const Icon(Icons.favorite_outline_rounded),
+              ),
+            ),
+          ],
+        ),
         body: BlocBuilder<MovieCubit, MovieState>(
           builder: (context, state) {
             return state.maybeWhen(
               loaded: (movies, currentPage) {
                 return ListView.builder(
+                  padding: EdgeInsets.zero,
                   itemCount: movies.length,
                   itemBuilder: (context, index) {
                     return InkWell(
