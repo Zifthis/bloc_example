@@ -28,6 +28,17 @@ class MovieCubit extends Cubit<MovieState> {
     );
   }
 
+  Future<void> getRefreshedMoviesList(int page) async {
+    final results = await _iMovieRepository.fetchPopularMovieResults(
+      page,
+    );
+
+    results.fold(
+      (l) => emit(MovieState.error(l)),
+      (r) => emit(MovieState.loaded(r, page)),
+    );
+  }
+
   Future<List<MovieResults>> getMovieResultsList(int page) async {
     return _iMovieRepository.fetchPopularMovieResultsList(page);
   }

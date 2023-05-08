@@ -22,13 +22,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "add_to_fav": MessageLookupByLibrary.simpleMessage("Add To Favroute"),
+        "add_to_fav": MessageLookupByLibrary.simpleMessage("Add To Favorite"),
         "added_to": MessageLookupByLibrary.simpleMessage("added the list!"),
+        "cant_launch": MessageLookupByLibrary.simpleMessage("Could not launch"),
         "counter_appbar_title":
             MessageLookupByLibrary.simpleMessage("Test title here"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "dio_error": MessageLookupByLibrary.simpleMessage("Dio Error"),
-        "fav_movies": MessageLookupByLibrary.simpleMessage("Favourite Movies"),
+        "fav_movies": MessageLookupByLibrary.simpleMessage("Favorite Movies"),
+        "go_to_web": MessageLookupByLibrary.simpleMessage("Go to website"),
         "list_empty": MessageLookupByLibrary.simpleMessage("List is empty!"),
         "movie_details": MessageLookupByLibrary.simpleMessage("Movie Details"),
         "removed_from":
@@ -36,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "server_error": MessageLookupByLibrary.simpleMessage("Server Error"),
         "server_error_description":
             MessageLookupByLibrary.simpleMessage("Something went wrong!"),
+        "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "shared": MessageLookupByLibrary.simpleMessage("Shared"),
         "upcoming_movies":
             MessageLookupByLibrary.simpleMessage("Upcoming Movies")
       };

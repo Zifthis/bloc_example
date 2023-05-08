@@ -90,20 +90,20 @@ class S {
     );
   }
 
-  /// `Favourite Movies`
+  /// `Favorite Movies`
   String get fav_movies {
     return Intl.message(
-      'Favourite Movies',
+      'Favorite Movies',
       name: 'fav_movies',
       desc: '',
       args: [],
     );
   }
 
-  /// `Add To Favroute`
+  /// `Add To Favorite`
   String get add_to_fav {
     return Intl.message(
-      'Add To Favroute',
+      'Add To Favorite',
       name: 'add_to_fav',
       desc: '',
       args: [],
@@ -165,6 +165,46 @@ class S {
     return Intl.message(
       'List is empty!',
       name: 'list_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share`
+  String get share {
+    return Intl.message(
+      'Share',
+      name: 'share',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shared`
+  String get shared {
+    return Intl.message(
+      'Shared',
+      name: 'shared',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to website`
+  String get go_to_web {
+    return Intl.message(
+      'Go to website',
+      name: 'go_to_web',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not launch`
+  String get cant_launch {
+    return Intl.message(
+      'Could not launch',
+      name: 'cant_launch',
       desc: '',
       args: [],
     );

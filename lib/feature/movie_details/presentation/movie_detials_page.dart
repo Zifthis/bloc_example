@@ -1,3 +1,5 @@
+// ignore_for_file: only_throw_errors
+
 import 'package:bloc_example/app/constants/constants.dart';
 import 'package:bloc_example/app/services/service_locator.dart';
 import 'package:bloc_example/app/utils/time_utils.dart';
@@ -6,6 +8,7 @@ import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:bloc_example/feature/movies/presentation/widgets/custom_text.dart';
 import 'package:bloc_example/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MovieDetialsPage extends StatelessWidget {
   const MovieDetialsPage({super.key, required this.movieResults});
@@ -77,6 +80,26 @@ class MovieDetialsPage extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       child: Text(S.current.add_to_fav.toUpperCase()),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    height: 52,
+                    width: MediaQuery.of(context).size.width,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey.shade700,
+                      ),
+                      onPressed: () async {
+                        final url =
+                            Uri.parse('${Constants.webUrl}${movieResults.id}');
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url);
+                        } else {
+                          throw '${S.current.cant_launch} $url';
+                        }
+                      },
+                      child: Text(S.current.go_to_web.toUpperCase()),
                     ),
                   ),
                   const SizedBox(height: 16),

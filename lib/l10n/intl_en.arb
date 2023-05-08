@@ -4,12 +4,16 @@
     "server_error": "Server Error",
     "server_error_description": "Something went wrong!",
     "dio_error": "Dio Error",
-    "fav_movies": "Favourite Movies",
-    "add_to_fav": "Add To Favroute",
+    "fav_movies": "Favorite Movies",
+    "add_to_fav": "Add To Favorite",
     "movie_details": "Movie Details",
     "upcoming_movies": "Upcoming Movies",
     "delete": "Delete",
     "removed_from": "removed from the list!",
     "added_to": "added the list!",
-    "list_empty": "List is empty!"
+    "list_empty": "List is empty!",
+    "share": "Share",
+    "shared": "Shared",
+    "go_to_web": "Go to website",
+    "cant_launch": "Could not launch"
 }   

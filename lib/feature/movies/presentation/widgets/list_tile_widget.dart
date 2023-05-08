@@ -18,8 +18,10 @@ class ListTileWidget extends StatelessWidget {
         child: Card(
           child: Stack(
             children: [
+              //TODO: error handling
               CachedNetworkImage(
-                imageUrl: '${Constants.imageUrl}${results.posterPath}',
+                imageUrl: '${Constants.imageUrl}${results.posterPath}' ??
+                    'https://placehold.co/600x400',
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: double.infinity,

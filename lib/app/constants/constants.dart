@@ -7,4 +7,5 @@ class Constants {
       'https://play-lh.googleusercontent.com/VgyD9nxsxISYNjNdGMq3ClUVLrKoMSWdwNHHqGSfFaiR4HMaPf6zOvqQfaD6eQ8P3x4';
   static const String boxLabel = 'movieKey';
   static const int hiveTypeId = 0;
+  static const String webUrl = 'https://www.themoviedb.org/movie/';
 }

@@ -9,6 +9,7 @@ import 'package:bloc_example/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MoviePage extends StatefulWidget {
   const MoviePage({super.key});
@@ -44,6 +45,13 @@ class _MoviePageState extends State<MoviePage> {
     }
   }
 
+  final RefreshController _refreshController = RefreshController();
+
+  Future<void> _onRefresh() async {
+    await sl<MovieCubit>().getRefreshedMoviesList(1);
+    _refreshController.refreshCompleted();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -71,20 +79,24 @@ class _MoviePageState extends State<MoviePage> {
           builder: (context, state) {
             return state.maybeWhen(
               loaded: (movies, currentPage) {
-                return PagedListView<int, MovieResults>(
-                  pagingController: _pagingController,
-                  builderDelegate: PagedChildBuilderDelegate<MovieResults>(
-                    itemBuilder: (context, item, index) => InkWell(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MovieDetialsPage(
-                            movieResults: movies[index],
+                return SmartRefresher(
+                  controller: _refreshController,
+                  onRefresh: _onRefresh,
+                  child: PagedListView<int, MovieResults>(
+                    pagingController: _pagingController,
+                    builderDelegate: PagedChildBuilderDelegate<MovieResults>(
+                      itemBuilder: (context, item, index) => InkWell(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MovieDetialsPage(
+                              movieResults: movies[index],
+                            ),
                           ),
                         ),
-                      ),
-                      child: ListTileWidget(
-                        results: item,
+                        child: ListTileWidget(
+                          results: item,
+                        ),
                       ),
                     ),
                   ),
