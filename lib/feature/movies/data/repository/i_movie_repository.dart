@@ -3,5 +3,5 @@ import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 
 abstract class IMovieRepository {
   EitherAppFailureOr<List<MovieResults>> fetchPopularMovieResults(int page);
-  EitherAppFailureOr<MovieResults> fetchMovieResults();
+  Future<List<MovieResults>> fetchPopularMovieResultsList(int page);
 }

@@ -16,7 +16,7 @@ class MovieCubit extends Cubit<MovieState> {
 
   final IMovieRepository _iMovieRepository;
 
-  Future<void> getNextPage(int page) async {
+  Future<void> getMoviesList(int page) async {
     emit(const MovieState.loading());
     final results = await _iMovieRepository.fetchPopularMovieResults(
       page,
@@ -26,5 +26,9 @@ class MovieCubit extends Cubit<MovieState> {
       (l) => emit(MovieState.error(l)),
       (r) => emit(MovieState.loaded(r, page)),
     );
+  }
+
+  Future<List<MovieResults>> getMovieResultsList(int page) async {
+    return _iMovieRepository.fetchPopularMovieResultsList(page);
   }
 }

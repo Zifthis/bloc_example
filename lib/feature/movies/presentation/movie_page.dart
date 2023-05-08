@@ -2,10 +2,13 @@
 import 'package:bloc_example/app/services/service_locator.dart';
 import 'package:bloc_example/feature/favourte_movies/presentation/favourite_movies_page.dart';
 import 'package:bloc_example/feature/movie_details/presentation/movie_detials_page.dart';
+import 'package:bloc_example/feature/movies/data/repository/movie_repository.dart';
 import 'package:bloc_example/feature/movies/domain/cubit/movie_cubit.dart';
+import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:bloc_example/feature/movies/presentation/widgets/list_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class MoviePage extends StatefulWidget {
   const MoviePage({super.key});
@@ -15,11 +18,36 @@ class MoviePage extends StatefulWidget {
 }
 
 class _MoviePageState extends State<MoviePage> {
-  int currentPage = 1;
+  static const _pageSize = 15;
+  final PagingController<int, MovieResults> _pagingController =
+      PagingController(firstPageKey: 1);
+
+  @override
+  void initState() {
+    _pagingController.addPageRequestListener(_fetchPage);
+    super.initState();
+  }
+
+  Future<void> _fetchPage(int pageKey) async {
+    try {
+      final newItems = await sl<MovieCubit>().getMovieResultsList(pageKey);
+      final isLastPage = newItems.length < _pageSize;
+
+      if (isLastPage) {
+        _pagingController.appendLastPage(newItems);
+      } else {
+        final nextPageKey = pageKey + newItems.length;
+        _pagingController.appendPage(newItems, nextPageKey);
+      }
+    } catch (error) {
+      _pagingController.error = error;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: sl<MovieCubit>()..getNextPage(currentPage),
+      value: sl<MovieCubit>()..getMoviesList(1),
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
@@ -43,7 +71,16 @@ class _MoviePageState extends State<MoviePage> {
           builder: (context, state) {
             return state.maybeWhen(
               loaded: (movies, currentPage) {
-                return ListView.builder(
+                return PagedListView<int, MovieResults>(
+                  pagingController: _pagingController,
+                  builderDelegate: PagedChildBuilderDelegate<MovieResults>(
+                    itemBuilder: (context, item, index) => ListTileWidget(
+                      results: item,
+                    ),
+                  ),
+                );
+
+                /* ListView.builder(
                   padding: EdgeInsets.zero,
                   itemCount: movies.length,
                   itemBuilder: (context, index) {
@@ -61,7 +98,7 @@ class _MoviePageState extends State<MoviePage> {
                       ),
                     );
                   },
-                );
+                );*/
               },
               loading: () => const Center(
                 child: CircularProgressIndicator(),
@@ -73,13 +110,13 @@ class _MoviePageState extends State<MoviePage> {
             );
           },
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            sl<MovieCubit>().getNextPage(currentPage++);
-          },
-          child: const Icon(Icons.arrow_downward),
-        ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _pagingController.dispose();
+    super.dispose();
   }
 }

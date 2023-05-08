@@ -30,8 +30,12 @@ class MovieRepository implements IMovieRepository {
   }
 
   @override
-  EitherAppFailureOr<MovieResults> fetchMovieResults() {
-    // TODO: implement fetchMovieResults
-    throw UnimplementedError();
+  Future<List<MovieResults>> fetchPopularMovieResultsList(int page) async {
+    try {
+      final response = await _apiClient.getUpcomingMovies(page);
+      return response.results!.map((e) => e.toDomain()).toList();
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }
