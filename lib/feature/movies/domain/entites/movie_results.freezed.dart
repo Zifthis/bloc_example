@@ -14,22 +14,40 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+MovieResults _$MovieResultsFromJson(Map<String, dynamic> json) {
+  return _MovieResults.fromJson(json);
+}
+
 /// @nodoc
 mixin _$MovieResults {
+  @HiveField(0)
   bool? get adult => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get backdropPath => throw _privateConstructorUsedError;
+  @HiveField(2)
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get originalLanguage => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get originalTitle => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get overview => throw _privateConstructorUsedError;
+  @HiveField(6)
   double? get popularity => throw _privateConstructorUsedError;
+  @HiveField(7)
   String? get posterPath => throw _privateConstructorUsedError;
+  @HiveField(8)
   DateTime? get releaseDate => throw _privateConstructorUsedError;
+  @HiveField(9)
   String? get title => throw _privateConstructorUsedError;
+  @HiveField(10)
   bool? get video => throw _privateConstructorUsedError;
+  @HiveField(11)
   double? get voteAverage => throw _privateConstructorUsedError;
+  @HiveField(12)
   int? get voteCount => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MovieResultsCopyWith<MovieResults> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,19 +60,19 @@ abstract class $MovieResultsCopyWith<$Res> {
       _$MovieResultsCopyWithImpl<$Res, MovieResults>;
   @useResult
   $Res call(
-      {bool? adult,
-      String? backdropPath,
-      int? id,
-      String? originalLanguage,
-      String? originalTitle,
-      String? overview,
-      double? popularity,
-      String? posterPath,
-      DateTime? releaseDate,
-      String? title,
-      bool? video,
-      double? voteAverage,
-      int? voteCount});
+      {@HiveField(0) bool? adult,
+      @HiveField(1) String? backdropPath,
+      @HiveField(2) int? id,
+      @HiveField(3) String? originalLanguage,
+      @HiveField(4) String? originalTitle,
+      @HiveField(5) String? overview,
+      @HiveField(6) double? popularity,
+      @HiveField(7) String? posterPath,
+      @HiveField(8) DateTime? releaseDate,
+      @HiveField(9) String? title,
+      @HiveField(10) bool? video,
+      @HiveField(11) double? voteAverage,
+      @HiveField(12) int? voteCount});
 }
 
 /// @nodoc
@@ -150,19 +168,19 @@ abstract class _$$_MovieResultsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool? adult,
-      String? backdropPath,
-      int? id,
-      String? originalLanguage,
-      String? originalTitle,
-      String? overview,
-      double? popularity,
-      String? posterPath,
-      DateTime? releaseDate,
-      String? title,
-      bool? video,
-      double? voteAverage,
-      int? voteCount});
+      {@HiveField(0) bool? adult,
+      @HiveField(1) String? backdropPath,
+      @HiveField(2) int? id,
+      @HiveField(3) String? originalLanguage,
+      @HiveField(4) String? originalTitle,
+      @HiveField(5) String? overview,
+      @HiveField(6) double? popularity,
+      @HiveField(7) String? posterPath,
+      @HiveField(8) DateTime? releaseDate,
+      @HiveField(9) String? title,
+      @HiveField(10) bool? video,
+      @HiveField(11) double? voteAverage,
+      @HiveField(12) int? voteCount});
 }
 
 /// @nodoc
@@ -248,48 +266,64 @@ class __$$_MovieResultsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_MovieResults implements _MovieResults {
   const _$_MovieResults(
-      {this.adult,
-      this.backdropPath,
-      this.id,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overview,
-      this.popularity,
-      this.posterPath,
-      this.releaseDate,
-      this.title,
-      this.video,
-      this.voteAverage,
-      this.voteCount});
+      {@HiveField(0) this.adult,
+      @HiveField(1) this.backdropPath,
+      @HiveField(2) this.id,
+      @HiveField(3) this.originalLanguage,
+      @HiveField(4) this.originalTitle,
+      @HiveField(5) this.overview,
+      @HiveField(6) this.popularity,
+      @HiveField(7) this.posterPath,
+      @HiveField(8) this.releaseDate,
+      @HiveField(9) this.title,
+      @HiveField(10) this.video,
+      @HiveField(11) this.voteAverage,
+      @HiveField(12) this.voteCount});
+
+  factory _$_MovieResults.fromJson(Map<String, dynamic> json) =>
+      _$$_MovieResultsFromJson(json);
 
   @override
+  @HiveField(0)
   final bool? adult;
   @override
+  @HiveField(1)
   final String? backdropPath;
   @override
+  @HiveField(2)
   final int? id;
   @override
+  @HiveField(3)
   final String? originalLanguage;
   @override
+  @HiveField(4)
   final String? originalTitle;
   @override
+  @HiveField(5)
   final String? overview;
   @override
+  @HiveField(6)
   final double? popularity;
   @override
+  @HiveField(7)
   final String? posterPath;
   @override
+  @HiveField(8)
   final DateTime? releaseDate;
   @override
+  @HiveField(9)
   final String? title;
   @override
+  @HiveField(10)
   final bool? video;
   @override
+  @HiveField(11)
   final double? voteAverage;
   @override
+  @HiveField(12)
   final int? voteCount;
 
   @override
@@ -326,6 +360,7 @@ class _$_MovieResults implements _MovieResults {
                 other.voteCount == voteCount));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -348,49 +383,72 @@ class _$_MovieResults implements _MovieResults {
   @pragma('vm:prefer-inline')
   _$$_MovieResultsCopyWith<_$_MovieResults> get copyWith =>
       __$$_MovieResultsCopyWithImpl<_$_MovieResults>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MovieResultsToJson(
+      this,
+    );
+  }
 }
 
 abstract class _MovieResults implements MovieResults {
   const factory _MovieResults(
-      {final bool? adult,
-      final String? backdropPath,
-      final int? id,
-      final String? originalLanguage,
-      final String? originalTitle,
-      final String? overview,
-      final double? popularity,
-      final String? posterPath,
-      final DateTime? releaseDate,
-      final String? title,
-      final bool? video,
-      final double? voteAverage,
-      final int? voteCount}) = _$_MovieResults;
+      {@HiveField(0) final bool? adult,
+      @HiveField(1) final String? backdropPath,
+      @HiveField(2) final int? id,
+      @HiveField(3) final String? originalLanguage,
+      @HiveField(4) final String? originalTitle,
+      @HiveField(5) final String? overview,
+      @HiveField(6) final double? popularity,
+      @HiveField(7) final String? posterPath,
+      @HiveField(8) final DateTime? releaseDate,
+      @HiveField(9) final String? title,
+      @HiveField(10) final bool? video,
+      @HiveField(11) final double? voteAverage,
+      @HiveField(12) final int? voteCount}) = _$_MovieResults;
+
+  factory _MovieResults.fromJson(Map<String, dynamic> json) =
+      _$_MovieResults.fromJson;
 
   @override
+  @HiveField(0)
   bool? get adult;
   @override
+  @HiveField(1)
   String? get backdropPath;
   @override
+  @HiveField(2)
   int? get id;
   @override
+  @HiveField(3)
   String? get originalLanguage;
   @override
+  @HiveField(4)
   String? get originalTitle;
   @override
+  @HiveField(5)
   String? get overview;
   @override
+  @HiveField(6)
   double? get popularity;
   @override
+  @HiveField(7)
   String? get posterPath;
   @override
+  @HiveField(8)
   DateTime? get releaseDate;
   @override
+  @HiveField(9)
   String? get title;
   @override
+  @HiveField(10)
   bool? get video;
   @override
+  @HiveField(11)
   double? get voteAverage;
   @override
+  @HiveField(12)
   int? get voteCount;
   @override
   @JsonKey(ignore: true)

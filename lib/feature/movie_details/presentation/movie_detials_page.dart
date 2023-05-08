@@ -1,4 +1,6 @@
 import 'package:bloc_example/app/constants/constants.dart';
+import 'package:bloc_example/app/services/service_locator.dart';
+import 'package:bloc_example/app/storage/cubit/movie_storage_cubit.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:bloc_example/feature/movies/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +49,12 @@ class MovieDetialsPage extends StatelessWidget {
                   const SizedBox(height: 16),
                   CustomText(
                     title: movieResults.overview ?? '',
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      sl<MovieStorageCubit>().addCity(movieResults);
+                    },
+                    child: const Text('Favourite Movie'),
                   ),
                   const SizedBox(height: 36),
                 ],

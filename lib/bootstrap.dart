@@ -3,8 +3,10 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:bloc_example/app/services/service_locator.dart';
+import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -32,7 +34,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-
+      await Hive.initFlutter();
+      Hive.registerAdapter(MovieResultsAdapter());
       configureDependencies();
 
       await SystemChrome.setPreferredOrientations([
