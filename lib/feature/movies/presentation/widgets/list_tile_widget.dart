@@ -1,8 +1,8 @@
 import 'package:bloc_example/app/constants/constants.dart';
+import 'package:bloc_example/app/utils/time_utils.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class ListTileWidget extends StatelessWidget {
   const ListTileWidget({
@@ -69,7 +69,7 @@ class ListTileWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 4),
                         child: Text(
-                          _dateForamt(results.releaseDate!),
+                          TimeUtils().dateForamt(results.releaseDate!),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -84,9 +84,4 @@ class ListTileWidget extends StatelessWidget {
           ),
         ),
       );
-
-  String _dateForamt(DateTime dateString) {
-    final formattedDate = DateFormat('MMMM d, y').format(dateString);
-    return formattedDate;
-  }
 }

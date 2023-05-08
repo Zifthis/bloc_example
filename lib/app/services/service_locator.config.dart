@@ -9,15 +9,16 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:bloc_example/app/network/api_client/api_client.dart' as _i8;
 import 'package:bloc_example/app/network/dio.dart' as _i13;
 import 'package:bloc_example/app/services/service_locator.dart' as _i14;
 import 'package:bloc_example/app/services/shared_prefes.dart' as _i12;
-import 'package:bloc_example/app/storage/cubit/movie_storage_cubit.dart' as _i6;
 import 'package:bloc_example/app/storage/repository/i_movie_local_storage.dart'
     as _i4;
 import 'package:bloc_example/app/storage/repository/movie_local_storage.dart'
     as _i5;
-import 'package:bloc_example/core/data/api_client/api_client.dart' as _i8;
+import 'package:bloc_example/feature/favourte_movies/cubit/movie_storage_cubit.dart'
+    as _i6;
 import 'package:bloc_example/feature/movies/data/repository/i_movie_repository.dart'
     as _i9;
 import 'package:bloc_example/feature/movies/data/repository/movie_repository.dart'

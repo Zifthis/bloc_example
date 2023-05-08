@@ -1,10 +1,11 @@
 import 'package:bloc_example/app/constants/constants.dart';
 import 'package:bloc_example/app/services/service_locator.dart';
-import 'package:bloc_example/app/storage/cubit/movie_storage_cubit.dart';
+import 'package:bloc_example/app/utils/time_utils.dart';
+import 'package:bloc_example/feature/favourte_movies/cubit/movie_storage_cubit.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:bloc_example/feature/movies/presentation/widgets/custom_text.dart';
+import 'package:bloc_example/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class MovieDetialsPage extends StatelessWidget {
   const MovieDetialsPage({super.key, required this.movieResults});
@@ -13,14 +14,21 @@ class MovieDetialsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Movie Details'),
+        title: Text(S.current.movie_details),
       ),
       body: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image:
-                NetworkImage('${Constants.imageUrl}${movieResults.posterPath}'),
+            image: movieResults.posterPath != null &&
+                    movieResults.posterPath!.isNotEmpty
+                ? NetworkImage(
+                    '${Constants.imageUrl}${movieResults.posterPath}',
+                  )
+                : NetworkImage(
+                    '${Constants.imageDefaultUrl}${movieResults.posterPath}',
+                  ),
             fit: BoxFit.cover,
           ),
           gradient: LinearGradient(
@@ -44,19 +52,34 @@ class MovieDetialsPage extends StatelessWidget {
                   CustomText(title: movieResults.title ?? ''),
                   const SizedBox(height: 8),
                   CustomText(
-                    title: _dateForamt(movieResults.releaseDate!),
+                    title: TimeUtils().dateForamt(movieResults.releaseDate!),
                   ),
                   const SizedBox(height: 16),
                   CustomText(
                     title: movieResults.overview ?? '',
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      sl<MovieStorageCubit>().addCity(movieResults);
-                    },
-                    child: const Text('Favourite Movie'),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 52,
+                    width: MediaQuery.of(context).size.width,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey.shade700,
+                      ),
+                      onPressed: () {
+                        final snackBar = SnackBar(
+                          content: Text(
+                            '${movieResults.title} ${S.current.added_to}',
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                        sl<MovieStorageCubit>().addMovie(movieResults);
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      },
+                      child: Text(S.current.add_to_fav.toUpperCase()),
+                    ),
                   ),
-                  const SizedBox(height: 36),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -64,10 +87,5 @@ class MovieDetialsPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String _dateForamt(DateTime dateString) {
-    final formattedDate = DateFormat('MMMM d, y').format(dateString);
-    return formattedDate;
   }
 }

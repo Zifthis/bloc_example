@@ -1,8 +1,8 @@
 // ignore_for_file: unawaited_futures, unnecessary_statements
 import 'package:bloc_example/app/constants/constants.dart';
+import 'package:bloc_example/app/network/error/error_handling/app_failure.dart';
+import 'package:bloc_example/app/network/error/error_handling/either_failure_or.dart';
 import 'package:bloc_example/app/storage/repository/i_movie_local_storage.dart';
-import 'package:bloc_example/core/domain/error_handling/app_failure.dart';
-import 'package:bloc_example/core/domain/error_handling/either_failure_or.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';

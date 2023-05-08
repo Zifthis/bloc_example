@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:bloc_example/core/domain/error_handling/app_failure.dart';
+import 'package:bloc_example/app/network/error/error_handling/app_failure.dart';
 import 'package:bloc_example/feature/movies/data/repository/i_movie_repository.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

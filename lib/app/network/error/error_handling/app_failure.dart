@@ -1,4 +1,4 @@
-import 'package:bloc_example/core/data/model/error_response.dart';
+import 'package:bloc_example/app/network/error/model/error_response.dart';
 import 'package:bloc_example/generated/l10n.dart';
 import 'package:dio/dio.dart';
 

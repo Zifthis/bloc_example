@@ -89,6 +89,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Favourite Movies`
+  String get fav_movies {
+    return Intl.message(
+      'Favourite Movies',
+      name: 'fav_movies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add To Favroute`
+  String get add_to_fav {
+    return Intl.message(
+      'Add To Favroute',
+      name: 'add_to_fav',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Movie Details`
+  String get movie_details {
+    return Intl.message(
+      'Movie Details',
+      name: 'movie_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upcoming Movies`
+  String get upcoming_movies {
+    return Intl.message(
+      'Upcoming Movies',
+      name: 'upcoming_movies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `removed from the list!`
+  String get removed_from {
+    return Intl.message(
+      'removed from the list!',
+      name: 'removed_from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `added the list!`
+  String get added_to {
+    return Intl.message(
+      'added the list!',
+      name: 'added_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `List is empty!`
+  String get list_empty {
+    return Intl.message(
+      'List is empty!',
+      name: 'list_empty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

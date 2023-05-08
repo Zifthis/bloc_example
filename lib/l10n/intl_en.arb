@@ -3,5 +3,13 @@
     "counter_appbar_title": "Test title here",
     "server_error": "Server Error",
     "server_error_description": "Something went wrong!",
-    "dio_error": "Dio Error"
+    "dio_error": "Dio Error",
+    "fav_movies": "Favourite Movies",
+    "add_to_fav": "Add To Favroute",
+    "movie_details": "Movie Details",
+    "upcoming_movies": "Upcoming Movies",
+    "delete": "Delete",
+    "removed_from": "removed from the list!",
+    "added_to": "added the list!",
+    "list_empty": "List is empty!"
 }   

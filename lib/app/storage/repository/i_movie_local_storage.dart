@@ -1,4 +1,4 @@
-import 'package:bloc_example/core/domain/error_handling/either_failure_or.dart';
+import 'package:bloc_example/app/network/error/error_handling/either_failure_or.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:dartz/dartz.dart';
 

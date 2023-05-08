@@ -2,10 +2,10 @@
 import 'package:bloc_example/app/services/service_locator.dart';
 import 'package:bloc_example/feature/favourte_movies/presentation/favourite_movies_page.dart';
 import 'package:bloc_example/feature/movie_details/presentation/movie_detials_page.dart';
-import 'package:bloc_example/feature/movies/data/repository/movie_repository.dart';
 import 'package:bloc_example/feature/movies/domain/cubit/movie_cubit.dart';
 import 'package:bloc_example/feature/movies/domain/entites/movie_results.dart';
 import 'package:bloc_example/feature/movies/presentation/widgets/list_tile_widget.dart';
+import 'package:bloc_example/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -18,7 +18,7 @@ class MoviePage extends StatefulWidget {
 }
 
 class _MoviePageState extends State<MoviePage> {
-  static const _pageSize = 15;
+  static const _pageSize = 10;
   final PagingController<int, MovieResults> _pagingController =
       PagingController(firstPageKey: 1);
 
@@ -51,7 +51,7 @@ class _MoviePageState extends State<MoviePage> {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          title: const Text('Upcoming Movies'),
+          title: Text(S.current.upcoming_movies),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8),
@@ -74,17 +74,7 @@ class _MoviePageState extends State<MoviePage> {
                 return PagedListView<int, MovieResults>(
                   pagingController: _pagingController,
                   builderDelegate: PagedChildBuilderDelegate<MovieResults>(
-                    itemBuilder: (context, item, index) => ListTileWidget(
-                      results: item,
-                    ),
-                  ),
-                );
-
-                /* ListView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: movies.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
+                    itemBuilder: (context, item, index) => InkWell(
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -94,11 +84,11 @@ class _MoviePageState extends State<MoviePage> {
                         ),
                       ),
                       child: ListTileWidget(
-                        results: movies[index],
+                        results: item,
                       ),
-                    );
-                  },
-                );*/
+                    ),
+                  ),
+                );
               },
               loading: () => const Center(
                 child: CircularProgressIndicator(),
