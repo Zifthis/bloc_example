@@ -76,7 +76,8 @@ class MovieDetialsPage extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                         );
-                        sl<MovieStorageCubit>().addMovie(movieResults);
+                        serviceLocator<MovieStorageCubit>()
+                            .addMovie(movieResults);
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       child: Text(S.current.add_to_fav.toUpperCase()),

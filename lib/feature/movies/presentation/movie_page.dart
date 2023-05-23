@@ -31,7 +31,8 @@ class _MoviePageState extends State<MoviePage> {
 
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final newItems = await sl<MovieCubit>().getMovieResultsList(pageKey);
+      final newItems =
+          await serviceLocator<MovieCubit>().getMovieResultsList(pageKey);
       final isLastPage = newItems.length < _pageSize;
 
       if (isLastPage) {
@@ -48,14 +49,14 @@ class _MoviePageState extends State<MoviePage> {
   final RefreshController _refreshController = RefreshController();
 
   Future<void> _onRefresh() async {
-    await sl<MovieCubit>().getRefreshedMoviesList(1);
+    await serviceLocator<MovieCubit>().getRefreshedMoviesList(1);
     _refreshController.refreshCompleted();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: sl<MovieCubit>()..getMoviesList(1),
+      value: serviceLocator<MovieCubit>()..getMoviesList(1),
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(

@@ -16,7 +16,7 @@ class FavouriteMoviesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: sl<MovieStorageCubit>()..getMovieList(),
+      value: serviceLocator<MovieStorageCubit>()..getMovieList(),
       child: Scaffold(
         backgroundColor: Colors.grey.shade700,
         appBar: AppBar(
@@ -32,7 +32,7 @@ class FavouriteMoviesPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   );
-                  sl<MovieStorageCubit>().deleteAllMovies();
+                  serviceLocator<MovieStorageCubit>().deleteAllMovies();
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 icon: const Icon(Icons.delete_rounded),
@@ -113,7 +113,7 @@ class FavouriteMoviesPage extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
     );
-    sl<MovieStorageCubit>().deleteMovie(movie, index);
+    serviceLocator<MovieStorageCubit>().deleteMovie(movie, index);
     ScaffoldMessenger.of(ctx).showSnackBar(snackBar);
   }
 
